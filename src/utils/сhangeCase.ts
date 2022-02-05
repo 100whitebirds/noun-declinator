@@ -17,7 +17,20 @@ export const changeCase = (word: string, gender: string, desiredCase: string) =>
     }
   }
 
-  if (word.endsWith('шек') && desiredCase !== Case.NOMINATIVE && desiredCase !== Case.ACCUSATIVE) {
+  const isDeminutive = (word: string) => {
+    return ((word.endsWith('шек') || word.endsWith('чек')) && word.length > 4) ? true : false
+  }
+
+  const endsWithOk = (word: string) => {
+    const exceptions = [
+      'скок', 'блок', 'волок', 'восток', 'шток', 
+      'брелок', 'щелок', 'войлок', 'челнок', 'зарок', 
+      'срок', 'урок', 'знаток', 'поток', 'сток', 'артишок'
+    ]
+    return (word.endsWith('ок') && exceptions.every(e => !word.includes(e)) && word.length > 3) ? true : false
+  }
+
+  if ((isDeminutive(word) || endsWithOk(word)) && desiredCase !== Case.NOMINATIVE && desiredCase !== Case.ACCUSATIVE) {
     word = word.slice(0, -2) + lastChar
   }
 
