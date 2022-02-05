@@ -9,10 +9,10 @@ export const changeCase = (word: string, wordGender: string, desiredCase: string
     if (consonants.includes(lastChar)) {
       return Gender.MASCULINE
     }
-    if (['е', 'я', 'а', 'ё', 'ь'].includes(lastChar)) {
-      return Gender.FEMININE
-    } else {
+    if (['о', 'е', 'и', 'у'].includes(lastChar) || word.endsWith('мя')) {
       return Gender.NEUTER
+    } else {
+      return Gender.FEMININE
     }
   }
   
