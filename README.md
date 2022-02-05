@@ -6,7 +6,7 @@ Demo: https://noun-declinator.vercel.app
 
 <h2> Screenshots: </h2>
 
-<img src="screenshots/screenshot.png" width="800">
+<img src="screenshots/shot.png" width="800">
 
 <h2> To run locally: </h2>
  
