@@ -1,6 +1,6 @@
 <h1> Noun-Declinator </h1>
 
-App that declines Russian nouns to 6 cases, built for hackathon onboarding
+App that declines Russian noun to 6 cases, built for hackathon onboarding
 
 Demo: https://noun-declinator.vercel.app
 
