@@ -1,10 +1,29 @@
 import { Case, Gender } from '../constants/constants'
 
-export const changeCase = (word: string, gender: string, desiredCase: string) => {
-  const consonants = 'бвгджзклмнпрстфхцчшщ'
+export const changeCase = (word: string, wordGender: string, desiredCase: string) => {
+  const consonants = 'бвгджзклмнпрстфхцчшщй'
   const lastChar = word.slice(-1)
   const wordStem = word.slice(0, -1)
+  
+  const defineGender = (word: string) => {
+    if (consonants.includes(lastChar)) {
+      return Gender.MASCULINE
+    }
+    if (['е', 'я', 'а', 'ё', 'ь'].includes(lastChar)) {
+      return Gender.FEMININE
+    } else {
+      return Gender.NEUTER
+    }
+  }
+  
+  let gender
 
+  if (wordGender !== '') {
+    gender = wordGender
+  } else {
+    gender = defineGender(word)
+  }
+  
   const defineDeclension = (lastChar: string, gender: string) => {
     if (lastChar === 'а' || lastChar === 'я') {
       return 1
