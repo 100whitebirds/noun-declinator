@@ -39,15 +39,6 @@ function App() {
     setWordGender(e.target.value)
   }
 
-  // const handleSubmit = () => {
-  //   if (!inputWord) {
-  //     setInputError(true)
-  //   } else {
-  //     setInputError(false)
-  //     setResultWord(changeCase(inputWord, wordGender, desiredCase))
-  //   }
-  // }
-
   const toggleGenderInput = () => {
     setGenderInputVisible(!genderInputVisible)
     setWordGender('')
