@@ -18,12 +18,11 @@ function App() {
   const [wordGender, setWordGender] = useState('')
   const [desiredCase, setDesiredCase] = useState('nominative')
   const [resultWord, setResultWord] = useState('')
-  const [inputError, setInputError] = useState(false)
   const [genderInputVisible, setGenderInputVisible] = useState(false)
 
   useEffect(() => {
     setResultWord(changeCase(inputWord, wordGender, desiredCase))
-  }, [inputWord, desiredCase])
+  }, [inputWord, wordGender, desiredCase])
   
   const handleInput = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
     setTimeout(() => {
@@ -48,7 +47,6 @@ function App() {
     <div className="app">
       <div className="container">
         <TextField 
-          error={inputError}
           id="outlined-basic" 
           label="Введите ваше слово" 
           variant="outlined" 
