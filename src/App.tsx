@@ -21,7 +21,7 @@ function App() {
   const [genderInputVisible, setGenderInputVisible] = useState(false)
 
   useEffect(() => {
-    setResultWord(changeCase(inputWord, wordGender, desiredCase))
+    inputWord && setResultWord(changeCase(inputWord, wordGender, desiredCase))
   }, [inputWord, wordGender, desiredCase])
   
   const handleInput = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
