@@ -39,6 +39,8 @@ export const changeCase = (word: string, wordGender: string, desiredCase: string
   const isDeminutive = (word: string) => {
     return ((word.endsWith('шек') || word.endsWith('чек')) && word.length > 4) ? true : false
   }
+  
+  const endsWithEtz = (word: string) => word.endsWith('ец')
 
   const endsWithOk = (word: string) => {
     const exceptions = [
@@ -49,7 +51,8 @@ export const changeCase = (word: string, wordGender: string, desiredCase: string
     return (word.endsWith('ок') && exceptions.every(e => !word.includes(e)) && word.length > 3) ? true : false
   }
 
-  if ((isDeminutive(word) || endsWithOk(word)) && desiredCase !== Case.NOMINATIVE && desiredCase !== Case.ACCUSATIVE) {
+  if ((isDeminutive(word) || endsWithOk(word) || endsWithEtz(word)) 
+  && desiredCase !== Case.NOMINATIVE && desiredCase !== Case.ACCUSATIVE) {
     word = word.slice(0, -2) + lastChar
   }
 
