@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Case, Gender } from './constants/constants'
 import 
 { Button, 
@@ -21,8 +21,14 @@ function App() {
   const [inputError, setInputError] = useState(false)
   const [genderInputVisible, setGenderInputVisible] = useState(false)
 
+  useEffect(() => {
+    setResultWord(changeCase(inputWord, wordGender, desiredCase))
+  }, [inputWord, desiredCase])
+  
   const handleInput = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
-    setInputWord(e.target.value)
+    setTimeout(() => {
+      setInputWord(e.target.value)
+    }, 500)
   }
 
   const handleSelectCase = (e: SelectChangeEvent) => {
@@ -33,15 +39,14 @@ function App() {
     setWordGender(e.target.value)
   }
 
-  const handleSubmit = () => {
-    if (!inputWord) {
-      setInputError(true)
-    } else {
-      setInputError(false)
-      const res = changeCase(inputWord, wordGender, desiredCase)
-      setResultWord(res)
-    }
-  }
+  // const handleSubmit = () => {
+  //   if (!inputWord) {
+  //     setInputError(true)
+  //   } else {
+  //     setInputError(false)
+  //     setResultWord(changeCase(inputWord, wordGender, desiredCase))
+  //   }
+  // }
 
   const toggleGenderInput = () => {
     setGenderInputVisible(!genderInputVisible)
@@ -98,14 +103,14 @@ function App() {
           </Select>
           <FormHelperText>Выберите желаемый падеж</FormHelperText>
         </FormControl>
-        <Button 
+        {/* <Button 
           color="success"
           sx={{margin: '10px', color: 'gray', border: '1px solid gray'}}
           variant="outlined"
           onClick={handleSubmit}
         >
           Преобразовать падеж
-        </Button>
+        </Button> */}
         <div className="resultBox">
           { resultWord }
         </div>
